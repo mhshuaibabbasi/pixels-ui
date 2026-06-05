@@ -1,7 +1,7 @@
 
-const isLocal = true; // Set this to true for local development
+const isLocal = false; // Set this to true for local development
 
-export const WEB_URL = 'https://api.pixels.com/pixels/';
+export const WEB_URL = 'https://pixels-server-io0i.onrender.com/';
 export const LOCAL = 'http://localhost:3002/pixels/';
 
 export const BASE_URL = isLocal ? LOCAL : WEB_URL;
