@@ -16,6 +16,7 @@ import {
   Zap,
   Wallet,
   Users,
+  Layers,
 } from "lucide-react";
 import { APP_CONFIG } from "@/config/app.config";
 
@@ -35,6 +36,7 @@ interface MenuItem {
 const allMenuItems: MenuItem[] = [
   { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
   { label: "Wallet", path: "/dashboard/wallet", icon: Wallet },
+  { label: "Plans", path: "/dashboard/plans", icon: Layers },
   { label: "Referral", path: "/dashboard/referral", icon: Users },
   { label: "Approvals", path: "/dashboard/approvals", icon: ShieldCheck, roles: ["ADMIN"] },
   { label: "Profile", path: "/dashboard/profile", icon: User },

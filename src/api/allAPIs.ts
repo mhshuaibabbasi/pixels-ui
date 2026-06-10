@@ -25,6 +25,9 @@ export const pixelsAPI = {
     requestWithdrawal: (payload: { user_id: number; amount: number; wallet_address: string; network: string }) =>
         httpService.postRequest(BASE_URL + 'wallet/withdraw', payload),
 
+    // Plans
+    getPlans: (payload: { user_id: number }) => httpService.postRequest(BASE_URL + 'plans/get', payload),
+
     // Referral
     getReferralSummary: (payload: { user_id: number }) => httpService.postRequest(BASE_URL + 'referral/summary', payload),
     getReferralTree: (payload: { user_id: number }) => httpService.postRequest(BASE_URL + 'referral/tree', payload),
