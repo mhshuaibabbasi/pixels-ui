@@ -17,6 +17,7 @@ import {
   Wallet,
   Users,
   Layers,
+  BarChart3,
 } from "lucide-react";
 import { APP_CONFIG } from "@/config/app.config";
 
@@ -39,6 +40,7 @@ const allMenuItems: MenuItem[] = [
   { label: "Plans", path: "/dashboard/plans", icon: Layers },
   { label: "Referral", path: "/dashboard/referral", icon: Users },
   { label: "Approvals", path: "/dashboard/approvals", icon: ShieldCheck, roles: ["ADMIN"] },
+  { label: "Analysis", path: "/dashboard/analysis", icon: BarChart3, roles: ["ADMIN"] },
   { label: "Profile", path: "/dashboard/profile", icon: User },
   { label: "Settings", path: "/dashboard/settings", icon: Settings },
   { label: "Notifications", path: "/dashboard/notifications", icon: Bell },

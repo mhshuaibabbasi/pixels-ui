@@ -35,7 +35,12 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  /* scroll-padding-top offsets anchor jumps (#about, #investment, …) so the
+     target section is not hidden under the fixed navbar. */
+  html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+
+  /* Belt-and-braces: any element targeted as a scroll anchor clears the header. */
+  section[id], [id] { scroll-margin-top: 5.5rem; }
 
   body {
     @apply bg-[#0a0e1a] text-gray-100 font-sans antialiased;

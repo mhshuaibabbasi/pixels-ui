@@ -33,6 +33,12 @@ export const pixelsAPI = {
     getReferralTree: (payload: { user_id: number }) => httpService.postRequest(BASE_URL + 'referral/tree', payload),
     validateReferralCode: (payload: { ref_code: string }) => httpService.postRequest(BASE_URL + 'referral/validate', payload),
 
+    // Admin analysis
+    getAnalysisOverview: (payload: { admin_id: number }) => httpService.postRequest(BASE_URL + 'analysis/overview', payload),
+    getAnalysisUsers: (payload: { admin_id: number }) => httpService.postRequest(BASE_URL + 'analysis/users', payload),
+    getAnalysisUser: (payload: { admin_id: number; user_id: number }) => httpService.postRequest(BASE_URL + 'analysis/user', payload),
+    getAnalysisNetwork: (payload: { admin_id: number }) => httpService.postRequest(BASE_URL + 'analysis/network', payload),
+
     // Admin approvals
     getPendingDeposits: () => httpService.postRequest(BASE_URL + 'admin/deposits/pending', {}),
     approveDeposit: (payload: { deposit_id: number; admin_id?: number }) => httpService.postRequest(BASE_URL + 'admin/deposits/approve', payload),

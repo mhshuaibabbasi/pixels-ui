@@ -21,6 +21,21 @@ export const Navbar = () => {
   const isHome = location.pathname === "/";
   const sectionHref = (href: string) => (isHome ? href : `/${href}`);
 
+  // Reliable smooth-scroll for section links (works on the home page and after
+  // routing back to it). scroll-margin-top in CSS handles the fixed-header offset.
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    const id = href.replace(/^\/?#/, "");
+    dispatch(setMobileMenuOpen(false));
+    if (isHome) {
+      e.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      e.preventDefault();
+      navigate("/");
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 250);
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
@@ -41,8 +56,8 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-3 bg-[#0a0e1a]/80 backdrop-blur-2xl border-b border-white/[0.07] shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
-          : "py-5 bg-transparent"
+          ? "py-3 bg-[#0a0e1a]/95 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "py-4 bg-[#0a0e1a]/40 backdrop-blur-md"
       }`}
     >
       <div className="section-container flex items-center justify-between">
@@ -64,6 +79,7 @@ export const Navbar = () => {
             <a
               key={link.name}
               href={sectionHref(link.href)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="relative text-sm font-semibold text-gray-400 hover:text-white transition-colors duration-200 tracking-wide group"
             >
               {link.name}
@@ -145,7 +161,7 @@ export const Navbar = () => {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 + 0.1 }}
-                  onClick={() => dispatch(setMobileMenuOpen(false))}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="flex items-center justify-between py-3 px-4 text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
                 >
                   {link.name}
